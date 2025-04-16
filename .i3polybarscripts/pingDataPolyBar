@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+
+use strict;
+
+my $ping;
+my $shortPing;
+my $color;
+
+open(PING, "fping -e 1.1.1.1 2> /dev/null |") or die;
+$ping = <PING>;
+close(PING);
+
+if(not defined($ping)){
+    exit(2);
+} elsif ($ping =~ /\(([^\(]+)\)/) {
+    $ping = $1;
+    if ($ping =~ /([^ms]+)/){
+        $shortPing = $1;
+    } else {
+        $shortPing = $ping;
+    }
+
+    if($shortPing > 1000) {
+        $color = "#F28FAD";
+    } elsif ( $shortPing > 100 ) {
+        $color = "#F8BD96";
+    } elsif ( $shortPing > 40 ) {
+        $color = "#ABE9B3";
+    } elsif ( $shortPing > 5 ) {
+        $color = "#B5E8E0";
+    } else {
+        $color = "#F5E0DC";
+    }
+} elsif ($ping =~ /(unreachable)/) {
+    $ping = "";
+    $color = "#F28FAD";
+} else {
+    $color = "#F28FAD";
+    die "%{F$color}$ping";
+}
+
+if ($ping == ""){
+    print "%{B$color}%{F#161320} $ping %{B-}";
+    exit(1)
+} else {
+    print "%{B$color}%{F#161320}  %{B-} %{F$color}$ping";
+    exit(0)
+}

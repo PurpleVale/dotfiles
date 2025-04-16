@@ -1,0 +1,55 @@
+alias :q=exit
+alias :wq=exit
+alias cal="cal -m -3"
+alias cd..="cd .."
+alias seehist="history -D -7"
+alias vialias="vim ~/.zsh/aliasrc -c ':set filetype=zsh'"
+alias virc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias vii3="vim ~/.config/i3/config"
+alias neofetch="neofetch --block_range 0 15"
+
+
+#################################
+#   ____      _                 #
+#  / ___|___ | | ___  _ __ ___  #
+# | |   / _ \| |/ _ \| '__/ __| #
+# | |__| (_) | | (_) | |  \__ \ #
+#  \____\___/|_|\___/|_|  |___/ #
+#                               #
+#################################
+
+alias ls="exa -F --color=always --group-directories-first"
+alias la="exa -aF --color=always --group-directories-first"
+alias ll="exa -lahgF --color=always --group-directories-first"
+alias l="exa -lhgF --color=always --group-directories-first"
+alias df="grc df"
+alias gcc="grc gcc"
+alias mount="grc mount"
+alias mtr="grc mtr"
+alias ping="grc ping"
+alias ps="grc ps"
+alias tail="grc tail"
+alias traceroute="grc traceroute"
+alias du="grc du"
+alias env="grc env"
+alias id="grc id"
+alias ip="grc ip"
+alias last="grc last"
+alias lsattr="grc lsattr"
+alias lsblk="grc lsblk"
+alias lspci="grc lspci"
+alias lsmod="grc lsmod"
+alias lsof="grc lsof"
+alias uptime="grc uptime"
+alias nmap="grc nmap"
+alias fdisk="grc fdisk"
+alias free="grc free"
+alias ss="grc ss"
+alias systemctl="grc systemctl"
+alias stat="grc stat"
+alias tcpdump="sudo grc tcpdump"
+alias netstat="grc netstat"
+alias diff="grc diff"
+alias tree="exa -TF --color=always --group-directories-first"
+alias grep="grep --color"
