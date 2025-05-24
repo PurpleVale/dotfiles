@@ -137,6 +137,7 @@ assign [class="rstudio"] $ws7
 assign [class="Gimp"] $ws7
 assign [class="gnome-text-editor"] $ws7
 assign [class="lyx"] $ws7
+assign [class="gitkraken"] $ws7
 # WS8: games
 assign [class="minecraft-launcher"] $ws8
 assign [class="Minecraft"] $ws8
@@ -252,6 +253,7 @@ bindsym $mod+Control+g exec sudo gparted
 bindsym $mod+$alt+g exec gimp
 bindsym $mod+Control+q exec qbittorrent
 bindsym $mod+c exec gnome-calculator
+bindsym $mod+Control+c exec clion
 bindsym $mod+x exec gnome-calendar
 bindsym $mod+b exec blueman-manager
 bindsym $mod+p exec pavucontrol
