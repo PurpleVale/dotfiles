@@ -2,7 +2,7 @@ set $mod Mod4
 set $alt Mod1
 set $terminal "alacritty"
 
-font pango:Anonymous Pro for Powerline 8
+font pango:Anonymous Pro for Powerline 7
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -131,6 +131,7 @@ assign [class="Nemo"] $ws5
 assign [class="vlc"] $ws6
 assign [class="feh"] $ws6
 assign [class="loupe"] $ws6
+assign [class="evince"] $ws6
 # WS7: editors
 assign [class="Audacity"] $ws7
 assign [class="rstudio"] $ws7
@@ -138,6 +139,7 @@ assign [class="Gimp"] $ws7
 assign [class="gnome-text-editor"] $ws7
 assign [class="lyx"] $ws7
 assign [class="gitkraken"] $ws7
+assign [class="Remarkable.bin"] $ws7
 # WS8: games
 assign [class="minecraft-launcher"] $ws8
 assign [class="Minecraft"] $ws8
@@ -259,7 +261,7 @@ bindsym $mod+b exec blueman-manager
 bindsym $mod+p exec pavucontrol
 bindsym $mod+o exec gnome-clocks
 bindsym $mod+n exec nemo
-bindsym $mod+Control+t exec telegram-desktop
+bindsym $mod+Control+t exec Telegram
 bindsym $mod+Control+d exec discord --no-sandbox
 bindsym $mod+Control+k exec screenkey
 bindsym $mod+Control+s exec steam
@@ -268,10 +270,9 @@ bindsym --release Shift+Print exec gnome-screenshot -p -b -a
 bindsym $mod+Escape exec rofi -show power-menu -modi "power-menu:~/Git/rofi-power-menu/rofi-power-menu"
 bindsym --release $mod+Delete exec xkill
 
-# notification deamon commands
-bindsym Control+$alt+space exec "kill -s USR1 $(pidof deadd-notification-center)"
-bindsym Control+$mod+space exec "notify-send a --hint boolean:deadd-notification-center:true string:type:clearInCenter"
-bindsym Control+space exec "notify-send a --hint boolean:deadd-notification-center:true string:type:clearPopups"
+# dunst
+# bindsym Control+$alt+space exec "kill -s USR1 $(pidof deadd-notification-center)"
+# bindsym Control+$mod+space exec "notify-send a --hint boolean:deadd-notification-center:true string:type:clearInCenter"
 
 # for windows modification
 for_window [class="gnome-screenshot"] floating enable
@@ -284,17 +285,20 @@ for_window [class="nm-connection-editor"] floating enable
 exec compton -D 1 -i 1.0 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id volumeicon
+exec --no-startup-id pa-applet
 exec --no-startup-id clipit
 exec --no-startup-id /usr/bin/lxpolkit 
 exec --no-startup-id /usr/lib/gsd-xsettings
+exec --no-startup-id dunst --config ./.config/dunst/dunstrc
 exec i3-msg workspace $ws1
 
 # always executing application
 exec_always feh --bg-fill --randomize /home/vale/Pictures/Wallpapers/*
 exec_always betterlockscreen -u /home/vale/Pictures/Wallpapers
 exec_always --no-startup-id startPolyBar
-exec_always notify-send -a "Settings" "i3wm" "Configuration loaded" 
+exec_always dunstify -a "i3" -i i3wm "Config reloaded" "the i3wm configuration was reloaded"
+exec_always rm ~/.dunstbrightnessID
+
 
 # aspect modification
 floating_modifier $mod
@@ -306,8 +310,8 @@ new_window 1pixel
 # bindsym XF86AudioRaiseVolume exec --no-startup-id /home/vale/.i3blocksScripts/raiseVolume #increase sound volume
 # bindsym XF86AudioLowerVolume exec --no-startup-id /home/vale/.i3blocksScripts/lowerVolume #decrease sound volume
 # bindsym XF86AudioMute exec --no-startup-id /home/vale/.i3blocksScripts/toggleVolume # mute sound
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
-bindsym XF86MonBrightnessDown exec --no-startup-id  brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+ && dunstBrightness
+bindsym XF86MonBrightnessDown exec --no-startup-id  brightnessctl s 5%- && dunstBrightness
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
@@ -315,7 +319,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 # bindsym XF86MyComputer
 bindsym XF86HomePage exec nemo
-bindsym XF86Launch2 exec nemo /home/vale/Storage/Uni
+bindsym XF86Launch2 exec nemo /home/vale/Storage/Uni/HPC
+bindsym $mod+Shift+n exec nemo /home/vale/Storage/Coding/Uni/
 bindsym XF86Calculator exec gnome-calculator
 # bindsym XF86AudioMedia
 # bindsym XF86AudioPrev

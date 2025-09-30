@@ -141,3 +141,27 @@ hide(){
 }
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
+
+# NLA & NMDPE labs and libs
+export APPTAINER_UNI_DIR="/home/vale/Storage/Coding/Uni/AMSC & NLA/Labs/AppTainer"
+export APPTAINER_TMPDIR=$APPTAINER_UNI_DIR/apptainer-tmp
+export APPTAINER_CACHEDIR=$APPTAINER_UNI_DIR/apptainer-cache
+
+export SuitesparseInc=/usr/include/suitesparse/
+export SuitesparseLib=/usr/lib/
+
+export OpenblasInc=/usr/include/openblas/
+export OpenblasLib=/usr/lib/
+
+export TbbInc=/usr/include/tbb/
+export TbbLib=/usr/lib/
+
+export Hdf5Inc=/usr/include/
+export Hdf5Lib=/usr/lib/
+
+export EigenInc=/usr/include/eigen3
+export EigenLib=/usr/include/eigen3
+
+export BoostInc=/usr/include/boost/
+export BoostLib=/usr/lib/

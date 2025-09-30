@@ -22,6 +22,7 @@ Plug 'preservim/nerdcommenter'                    " Better way of commenting
 Plug 'jiangmiao/auto-pairs'                       " Better {[(
 Plug 'nvie/vim-flake8'                            " Syntax checker for python and autocompletition
 Plug 'mattn/emmet-vim'                            " god-like html editing
+Plug 'lervag/vimtex'                              " LaTeX for vim
 " Plug 'tpope/vim-fugitive'                         " git on vim
 
 call plug#end()		" required, all plugins must appear before this line.
@@ -228,33 +229,10 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => YouCompleateMe
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_global_ycm_extra_conf = '/home/valele/.ycm_extra_conf.py'
-" set signcolumn=off
-let g:ycm_auto_hover = 1
-nmap <leader>yD <plug>(YCMHover)
-
-let g:ycm_warning_symbol = '**'
-let g:ycm_error_symbol = '->'
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-map <leader>yf :YcmCompleter FixIt<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => devicons
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=UTF-8
 let g:airline_powerline_fonts = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => TagBar
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>b :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => emmet
@@ -262,5 +240,10 @@ nmap <leader>b :TagbarToggle<CR>
 let g:user_emmet_leader_key='<leader>,'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fugitive
+" => VimTeX
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+
