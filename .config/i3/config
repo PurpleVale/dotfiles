@@ -259,6 +259,7 @@ bindsym $mod+Control+c exec clion
 bindsym $mod+x exec gnome-calendar
 bindsym $mod+b exec blueman-manager
 bindsym $mod+p exec pavucontrol
+bindsym $mod+Control+p exec pycharm-professional
 bindsym $mod+o exec gnome-clocks
 bindsym $mod+n exec nemo
 bindsym $mod+Control+t exec Telegram
@@ -271,8 +272,10 @@ bindsym $mod+Escape exec rofi -show power-menu -modi "power-menu:~/Git/rofi-powe
 bindsym --release $mod+Delete exec xkill
 
 # dunst
-# bindsym Control+$alt+space exec "kill -s USR1 $(pidof deadd-notification-center)"
-# bindsym Control+$mod+space exec "notify-send a --hint boolean:deadd-notification-center:true string:type:clearInCenter"
+bindsym Control+$alt+space exec "dunstctl history-pop"
+bindsym Control+$mod+space exec "dunstctl close-all"
+bindsym Control+space exec "dunstctl close"
+bindsym Control+Shift+space exec "dunstctl context"
 
 # for windows modification
 for_window [class="gnome-screenshot"] floating enable
@@ -280,6 +283,7 @@ for_window [class="org.gnome.clocks"] floating enable
 for_window [class="gnome-calendar"] floating enable
 for_window [class="gnome-calculator"] floating enable
 for_window [class="nm-connection-editor"] floating enable
+for_window [class="Project"] floating enable
 
 # start up application
 exec compton -D 1 -i 1.0 
@@ -297,7 +301,6 @@ exec_always feh --bg-fill --randomize /home/vale/Pictures/Wallpapers/*
 exec_always betterlockscreen -u /home/vale/Pictures/Wallpapers
 exec_always --no-startup-id startPolyBar
 exec_always dunstify -a "i3" -i i3wm "Config reloaded" "the i3wm configuration was reloaded"
-exec_always rm ~/.dunstbrightnessID
 
 
 # aspect modification

@@ -3,7 +3,7 @@ frame_width = 1
 frame_color = "#24273acc"
 markup = yes
 shrink = yes
-dmenu = /usr/bin/rofi dmenu -p dunst
+dmenu = /usr/bin/rofi -dmenu -p dunst:
 show_indicators = yes
 enable_posix_regex = true
 width = (300,650)
@@ -11,19 +11,19 @@ origin = top-center
 progress_bar_height = 20
 progress_bar_corner_radius = 5
 gap_size = 5
-font = Roboto 12
+font = Anonymous Pro 10
 icon_path = "/usr/share/icons/Papirus-Dark/16x16/actions/:/usr/share/icons/Papirus-Dark/16x16/apps/:/usr/share/icons/Papirus-Dark/16x16/categories/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/panel/:/usr/share/icons/Papirus-Dark/16x16/status/:/home/vale/.icons/default/"
 icon_theme = "Papirus-Dark"
 corner_radius = 5
-background = "#363a4fcc"
+background = "#363a4fff"
 foreground = "#cad3f5ff"
 highlight = "#c6a0f6ff"
 
 [urgency_low]
-background = "#a6da95cc"
+background = "#a6da95ff"
 foreground = "#556064"
 
 [urgency_critical]
-background = "#f5a97fcc"
+background = "#f5a97fff"
 foreground = "#24273aff"
 
