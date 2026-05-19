@@ -1,19 +1,52 @@
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                                                                               ┃
+#┃       ▀     ▄▄▄▄           ▄▄▄                  ▄▀▀    ▀                      ┃
+#┃     ▄▄▄    ▀   ▀█        ▄▀   ▀  ▄▄▄   ▄ ▄▄   ▄▄█▄▄  ▄▄▄     ▄▄▄▄   ▄▄▄       ┃
+#┃       █      ▄▄▄▀        █      █▀ ▀█  █▀  █    █      █    █▀ ▀█  █   ▀      ┃
+#┃       █        ▀█        █      █   █  █   █    █      █    █   █   ▀▀▀▄      ┃
+#┃     ▄▄█▄▄  ▀▄▄▄█▀         ▀▄▄▄▀ ▀█▄█▀  █   █    █    ▄▄█▄▄  ▀█▄▀█  ▀▄▄▄▀      ┃
+#┃                                                              ▄  █             ┃
+#┃                                                               ▀▀              ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                                Main Modifers                                  ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 set $mod Mod4
 set $alt Mod1
-set $terminal "alacritty"
-
-font pango:Anonymous Pro for Powerline 7
-
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                             Personalized Styles                               ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# aspect modification
+for_window [class="^.*"] border normal 2
+for_window [class="^.*"] title_format "<b>%title%</b>"
+for_window [all] title_window_icon padding 1px
+new_window 1pixel
+
+client.focused          #F28FAD #F28FAD #1D2325 #F28FAD   #F28FAD
+client.focused_inactive #F5C2E7 #F5C2E7 #1D2325 #F5C2E7   #F5C2E7
+client.unfocused        #96CDFB #96CDFB #1D2325 #96CDFB   #96CDFB
+client.urgent           #F8BD96 #F8BD96 #1D2325 #F8BD96   #F8BD96
+client.placeholder      #988BA2 #988BA2 #1D2325 #988BA2   #988BA2
+
+font pango:Anonymous Pro for Powerline 9
+
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                                Main Keybinds                                  ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# terminal
+set $terminal "alacritty"
 bindsym $mod+Return exec $terminal
 
-# kill focused window
+# close window
 bindsym $mod+Shift+q kill
+bindsym --release $mod+button2 kill
 
-# start dmenu (a program launcher)
+# Rofi (dmenu)
 bindsym $mod+d exec rofi -show run
 bindsym $alt+Tab exec --no-startup-id rofi -modi combi -combi-modi window -show combi
 #bindsym $mod+Tab exec rofi -show window
@@ -28,7 +61,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# move window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
@@ -38,178 +71,63 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# change split mode
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# fullscreen
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# change layout
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# toggle floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+# change focus wheen floating
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+# focus parent
 bindsym $mod+a focus parent
 
-# vars
-set $ws0 "0 "
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4  "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 " 
-set $ws8 "8 " 
-set $ws9 "9 " 
-set $ws10 "10 "
-
-# switch between monitors
-bindsym $mod+Control+Left move workspace to output left
-bindsym $mod+Control+Down move workspace to output down
-bindsym $mod+Control+Up move workspace to output top
-bindsym $mod+Control+Right move workspace to output right
-
-# switch to workspace
-bindsym $mod+backslash workspace $ws0
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+backslash move container to workspace $ws0
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-# windows to worspaces
-# WS0: Temporary and Background 
-assign [class="EXAMPLEWINDOWCLASS"] $ws0
-# WS1: terminals
-assign [class="Alacritty"] $ws1
-# WS2: web
-assign [class="firefox"] $ws2
-# WS3: programming
-assign [class="jetbrains-pycharm"] $ws3
-assign [class="jetbrains-clion"] $ws3
-assign [class="jetbrains-phpstorm"] $ws3
-assign [class="jetbrains-idea"] $ws3
-assign [class="jetbrains-rustrover"] $ws3
-assign [class="jetbrains-webstorm"] $ws3
-assign [class="jetbrains-datagrip"] $ws3
-# WS4: chat and communication
-assign [class="TelegramDesktop"] $ws4
-assign [class="discord"] $ws4
-# WS5: file manager
-assign [class="Nautilus"] $ws5
-assign [class="Nemo"] $ws5
-# WS6: multimedia
-assign [class="vlc"] $ws6
-assign [class="feh"] $ws6
-assign [class="loupe"] $ws6
-assign [class="evince"] $ws6
-# WS7: editors
-assign [class="Audacity"] $ws7
-assign [class="rstudio"] $ws7
-assign [class="Gimp"] $ws7
-assign [class="gnome-text-editor"] $ws7
-assign [class="lyx"] $ws7
-assign [class="gitkraken"] $ws7
-assign [class="Remarkable.bin"] $ws7
-# WS8: games
-assign [class="minecraft-launcher"] $ws8
-assign [class="Minecraft"] $ws8
-assign [class="XIVLauncher.Core"] $ws8
-assign [class="ffxiv_dx11.exe"] $ws8
-assign [class="Lutris"] $ws8
-assign [class="Steam"] $ws8
-assign [class="steam"] $ws8
-assign [title="Steam"] $ws8
-# WS9: utility
-assign [class="obs"] $ws9
-assign [class="Pulseeffects"] $ws9
-assign [class="Org.gnome.clocks"] $ws9
-assign [class="qBittorrent"] $ws9
-# WS10: system
-assign [class="Lxappearance"] $ws10
-assign [class="Nvidia-settings"] $ws10
-assign [class="Arandr"] $ws10
-assign [class="Dconf-editor"] $ws10
-assign [class="pavucontrol"] $ws10
-assign [class="GParted"] $ws10
-assign [class="Blueman-manager"] $ws10
-assign [class="Grub-customizer"] $ws10
-assign [class="font-manager"] $ws10
-
-# reload the configuration file
+# reload i3
 bindsym $mod+Shift+c reload
-# restart i3 inplace 
+# restart i3
 bindsym $mod+Shift+r restart
-# exit i3 
+# logout from i3 (back to DM)
 bindsym $mod+Shift+e exec i3-msg exit
 
-# resize window (you can also use the mouse for that)
+# resizing window
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym ograve resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
-
-#############################
-### settings for i3-gaps: ###
-#############################
-
-# Set inner/outer gaps
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                               i3 Gaps Settings                                ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 gaps inner 5
 gaps outer 0
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
-smart_borders on
+# smart_borders on
 
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+# $mod+Shift+g => gap mode
+# o/i => outer/inner gaps
+# +/- => increment/decrement for current workspace
+# or 0 remove gaps for current workspace
+# Shift => global change
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer: +-0 (local) Shift +-0 (global)
 set $mode_gaps_inner Inner: +-0 (local) Shift +-0 (global)
@@ -246,68 +164,166 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# my keybinds
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                                  WorkSpaces                                   ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# Icons
+set $ws0 "0 "
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4  "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 " 
+set $ws8 "8 " 
+set $ws9 "9 " 
+set $ws10 "10 "
+
+# Change Monitor (same X screen aka gpu)
+bindsym $mod+Control+Left move workspace to output left
+bindsym $mod+Control+Down move workspace to output down
+bindsym $mod+Control+Up move workspace to output top
+bindsym $mod+Control+Right move workspace to output right
+
+# change ws
+bindsym $mod+backslash workspace $ws0
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move window to ws
+bindsym $mod+Shift+backslash move container to workspace $ws0
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# WS0: Temporary and Background 
+assign [class="EXAMPLEWINDOWCLASS"] $ws0
+
+# WS1: terminals
+assign [class="Alacritty"] $ws1
+
+# WS2: web
+assign [class="firefox"] $ws2
+
+# WS3: programming
+assign [class="jetbrains-pycharm"] $ws3
+assign [class="jetbrains-clion"] $ws3
+assign [class="jetbrains-phpstorm"] $ws3
+assign [class="jetbrains-idea"] $ws3
+assign [class="jetbrains-rustrover"] $ws3
+assign [class="jetbrains-webstorm"] $ws3
+assign [class="jetbrains-datagrip"] $ws3
+assign [class="parameter_gui"] $ws3
+
+# WS4: chat and communication
+assign [class="TelegramDesktop"] $ws4
+assign [class="discord"] $ws4
+
+# WS5: file manager
+assign [class="Nautilus"] $ws5
+assign [class="Nemo"] $ws5
+
+# WS6: multimedia
+assign [class="vlc"] $ws6
+assign [class="feh"] $ws6
+assign [class="loupe"] $ws6
+assign [class="evince"] $ws6
+
+# WS7: editors
+assign [class="Audacity"] $ws7
+assign [class="rstudio"] $ws7
+assign [class="Gimp"] $ws7
+assign [class="gnome-text-editor"] $ws7
+assign [class="lyx"] $ws7
+assign [class="gitkraken"] $ws7
+assign [class="Remarkable.bin"] $ws7
+assign [class="Gmsh"] $ws7
+assign [class="paraview"] $ws7
+assign [class="DBeaver"] $ws7
+
+# WS8: games
+assign [class="minecraft-launcher"] $ws8
+assign [class="Minecraft"] $ws8
+assign [class="XIVLauncher.Core"] $ws8
+assign [class="ffxiv_dx11.exe"] $ws8
+assign [class="Lutris"] $ws8
+assign [class="Steam"] $ws8
+assign [class="steam"] $ws8
+assign [title="Steam"] $ws8
+
+# WS9: utility
+assign [class="obs"] $ws9
+assign [class="Pulseeffects"] $ws9
+assign [class="Org.gnome.clocks"] $ws9
+assign [class="qBittorrent"] $ws9
+
+# WS10: system
+assign [class="Lxappearance"] $ws10
+assign [class="Nvidia-settings"] $ws10
+assign [class="Arandr"] $ws10
+assign [class="Dconf-editor"] $ws10
+assign [class="pavucontrol"] $ws10
+assign [class="GParted"] $ws10
+assign [class="Blueman-manager"] $ws10
+assign [class="Grub-customizer"] $ws10
+assign [class="font-manager"] $ws10
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                              Personal Keybinds                                ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# system keybinds
+bindsym --release Print exec gnome-screenshot -p -b
+bindsym --release Shift+Print exec gnome-screenshot -p -b -a
+
+bindsym $mod+Escape exec rofi -show power-menu -modi "power-menu:~/Git/rofi-power-menu/rofi-power-menu"
+
+bindsym --release $mod+Delete exec xkill
+
 bindsym $mod+Shift+x exec betterlockscreen -l & betterlockscreen -u /home/vale/Pictures/Wallpapers
 bindsym $mod+Control+x exec betterlockscreen -l & betterlockscreen -u /home/vale/Pictures/Wallpapers & sudo systemctl suspend
-bindsym $mod+Shift+a exec arandr
-bindsym $mod+g exec firefox
-bindsym $mod+Control+g exec sudo gparted
-bindsym $mod+$alt+g exec gimp
-bindsym $mod+Control+q exec qbittorrent
+
+# utilities keybinds
 bindsym $mod+c exec gnome-calculator
-bindsym $mod+Control+c exec clion
 bindsym $mod+x exec gnome-calendar
 bindsym $mod+b exec blueman-manager
 bindsym $mod+p exec pavucontrol
-bindsym $mod+Control+p exec pycharm-professional
 bindsym $mod+o exec gnome-clocks
 bindsym $mod+n exec nemo
+bindsym $mod+g exec firefox
+
+# IDEs keybinds
+bindsym $mod+Control+c exec clion
+bindsym $mod+Control+w exec webstorm
+bindsym $mod+Control+p exec phpstorm
+bindsym $mod+Control+b exec datagrip
+
+# communication keybinds
 bindsym $mod+Control+t exec Telegram
 bindsym $mod+Control+d exec discord --no-sandbox
-bindsym $mod+Control+k exec screenkey
-bindsym $mod+Control+s exec steam
-bindsym --release Print exec gnome-screenshot -p -b
-bindsym --release Shift+Print exec gnome-screenshot -p -b -a
-bindsym $mod+Escape exec rofi -show power-menu -modi "power-menu:~/Git/rofi-power-menu/rofi-power-menu"
-bindsym --release $mod+Delete exec xkill
 
-# dunst
+# notification (dunst) keybinds
 bindsym Control+$alt+space exec "dunstctl history-pop"
 bindsym Control+$mod+space exec "dunstctl close-all"
 bindsym Control+space exec "dunstctl close"
 bindsym Control+Shift+space exec "dunstctl context"
-
-# for windows modification
-for_window [class="gnome-screenshot"] floating enable
-for_window [class="org.gnome.clocks"] floating enable
-for_window [class="gnome-calendar"] floating enable
-for_window [class="gnome-calculator"] floating enable
-for_window [class="nm-connection-editor"] floating enable
-for_window [class="Project"] floating enable
-
-# start up application
-exec compton -D 1 -i 1.0 
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id pa-applet
-exec --no-startup-id clipit
-exec --no-startup-id /usr/bin/lxpolkit 
-exec --no-startup-id /usr/lib/gsd-xsettings
-exec --no-startup-id dunst --config ./.config/dunst/dunstrc
-exec i3-msg workspace $ws1
-
-# always executing application
-exec_always feh --bg-fill --randomize /home/vale/Pictures/Wallpapers/*
-exec_always betterlockscreen -u /home/vale/Pictures/Wallpapers
-exec_always --no-startup-id startPolyBar
-exec_always dunstify -a "i3" -i i3wm "Config reloaded" "the i3wm configuration was reloaded"
-
-
-# aspect modification
-floating_modifier $mod
-for_window [class="^.*"] border pixel 2
-new_window 1pixel
-
 
 # multimedia keys
 # bindsym XF86AudioRaiseVolume exec --no-startup-id /home/vale/.i3blocksScripts/raiseVolume #increase sound volume
@@ -333,9 +349,38 @@ bindsym XF86Calculator exec gnome-calculator
 
 bindsym F1 exec --no-startup-id "rofi -modi drun,run -show drun -show-icons"
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #DDB6F2 #DDB6F2 #DDB6F2 #DDB6F2   #DDB6F2
-client.focused_inactive #F5C2E7 #F5C2E7 #F5C2E7 #F5C2E7   #F5C2E7
-client.unfocused        #96CDFB #96CDFB #96CDFB #96CDFB   #96CDFB
-client.urgent           #F8BD96 #F8BD96 #F8BD96 #F8BD96   #F8BD96
-client.placeholder      #988BA2 #988BA2 #988BA2 #988BA2   #988BA2
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                             Per Window Modifiers                              ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# for windows modification
+for_window [class="gnome-screenshot"] floating enable
+for_window [class="org.gnome.clocks"] floating enable
+for_window [class="gnome-calendar"] floating enable
+for_window [class="gnome-calculator"] floating enable
+for_window [class="nm-connection-editor"] floating enable
+for_window [class="Project"] floating enable
+for_window [class="org.gnome.FileRoller"] floating enable
+for_window [class="parameter_gui"] floating enable
+
+#┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+#┃                             Startup Applications                              ┃
+#┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# execute once
+exec picom -D 1
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id pa-applet
+exec --no-startup-id clipit
+exec --no-startup-id /usr/bin/lxpolkit 
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec --no-startup-id dunst --config ./.config/dunst/dunstrc
+exec i3-msg workspace $ws1
+
+# always executing application
+exec_always feh --bg-fill --randomize /home/vale/Pictures/Wallpapers/*
+exec_always betterlockscreen -u /home/vale/Pictures/Wallpapers
+exec_always --no-startup-id startPolyBar
+exec_always dunstify -a "i3" -i i3wm "Config reloaded" "the i3wm configuration was reloaded"

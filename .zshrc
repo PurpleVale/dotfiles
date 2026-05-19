@@ -131,7 +131,8 @@ source /usr/share/autojump/autojump.zsh 2>/dev/null
 
 # PATH
 # export PATH=/home/vale/.bin:/home/vale/.screenlayout:/home/vale/.local/bin:$PATH
-export PATH=$PATH:/home/vale/.local/bin
+export PATH=$PATH:/home/vale/.local/bin:/usr/local/share/examples/lis
+# export PATH=$PATH:/home/vale/.local/bin
 
 # MAN COMMAND USE VIM
 export MANPAGER='vim -R -M +MANPAGER -'
@@ -141,27 +142,4 @@ hide(){
 }
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
-
-
-# NLA & NMDPE labs and libs
-export APPTAINER_UNI_DIR="/home/vale/Storage/Coding/Uni/AMSC & NLA/Labs/AppTainer"
-export APPTAINER_TMPDIR=$APPTAINER_UNI_DIR/apptainer-tmp
-export APPTAINER_CACHEDIR=$APPTAINER_UNI_DIR/apptainer-cache
-
-export SuitesparseInc=/usr/include/suitesparse/
-export SuitesparseLib=/usr/lib/
-
-export OpenblasInc=/usr/include/openblas/
-export OpenblasLib=/usr/lib/
-
-export TbbInc=/usr/include/tbb/
-export TbbLib=/usr/lib/
-
-export Hdf5Inc=/usr/include/
-export Hdf5Lib=/usr/lib/
-
-export EigenInc=/usr/include/eigen3
-export EigenLib=/usr/include/eigen3
-
-export BoostInc=/usr/include/boost/
-export BoostLib=/usr/lib/
+export APPTAINER_UNI_DIR=$HOME'/Storage/Coding/Uni/AMSC & NLA/AppTainer'

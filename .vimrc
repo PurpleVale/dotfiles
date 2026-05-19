@@ -24,6 +24,7 @@ Plug 'nvie/vim-flake8'                            " Syntax checker for python an
 Plug 'mattn/emmet-vim'                            " god-like html editing
 Plug 'lervag/vimtex'                              " LaTeX for vim
 " Plug 'tpope/vim-fugitive'                         " git on vim
+Plug 'jkramer/vim-checkbox'                       " checkboxes hell yeag
 
 call plug#end()		" required, all plugins must appear before this line.
 
@@ -243,7 +244,12 @@ let g:user_emmet_leader_key='<leader>,'
 " => VimTeX
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim CheckBox
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" to do everything : \tt
 
+let g:checkbox_states = [' ', '✓', '✗']
 
 
 
