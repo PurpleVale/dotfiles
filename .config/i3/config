@@ -22,7 +22,7 @@ floating_modifier $mod
 #┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 # aspect modification
 for_window [class="^.*"] border normal 2
-for_window [class="^.*"] title_format "<b>%title%</b>"
+for_window [class="^.*"] title_format "<b>%title</b>"
 for_window [all] title_window_icon padding 1px
 new_window 1pixel
 
