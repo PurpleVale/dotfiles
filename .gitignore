@@ -56,11 +56,14 @@
 .config/massif-visualizerrc
 .config/menus
 .config/obs-studio
+.config/goa*
+.config/GitHub
 .docker
 .fontconfig/
 .fonts/
 .gitconfig
 .gitkraken/
+.apptainer/
 .gk/
 .gnupg/
 .gtkrc-2.0
@@ -112,3 +115,4 @@ Storage/
 Templates/
 Videos/
 
+.recovery*
